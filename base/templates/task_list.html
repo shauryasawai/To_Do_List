@@ -19,6 +19,21 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        @media only screen and (max-width: 767px) {
+            body {
+            font-size: 14px;
+        }
+    }
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            body {
+            font-size: 16px;
+         }
+    }
+        @media only screen and (min-width: 992px) {
+            body {
+            font-size: 18px;
+        }
+    }
         h2 {
             text-align: center;
             margin-bottom: 20px;
@@ -32,6 +47,7 @@
             margin-bottom: 20px;
         }
         .task-list {
+            textt-align: center:
             margin-bottom: 20px;
         }
         .task {
@@ -45,6 +61,16 @@
         }
         .task p {
             margin-bottom: 0;
+        }
+        .task1{
+            margin-top: 120px;
+        }
+        .ls{
+            padding-left: 50px
+        }
+        .ls1{
+            padding-left: 67px
+            
         }
         .search-box {
             margin-bottom: 20px;
@@ -73,17 +99,18 @@
 <body>
     <div class="container">
         <div class="user-greeting">
-    <h1>Hello {{request.user|title}}</h1>
+    <h1>Hello {{request.user|title}}</h1> 
+    <br> 
+     <a href="{% url 'logout' %}">This is not me.</a>
 </div>
 <div class="task-status">
   <h3 style="margin:0">You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}</h3>
 </div>
 
-    <a href="{% url 'logout' %}">Logout</a>
+    
     <div class="container">
-    <h1>Task List</h1>
-    <ul>
-     
+    <h1 class="ls">Task List</h1>
+    <ul class="ls1">
         {% for task in tasks %}
             <li><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></li>
         {% empty %}
@@ -106,8 +133,9 @@
             </div>
         </div>
         <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
-            <h3>No new tasks are created.</h3>
-            <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task_create' %}">New task</a> ! </h3>
+            <h3 class="task1">Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task_create' %}">New task</a> ! 
+            </h3>
+            <h3></h3>
         </div>
     </div>
 
@@ -146,6 +174,6 @@
         document.ondrop = reordering
     </script>
 
-<a href="{% url 'task_create' %}">Create New Task</a>   
+ 
 </body>
 </html>
